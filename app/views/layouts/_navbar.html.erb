@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Редактировать профиль", edit_user_registration_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Выйти из учётной записи", destroy_user_session_path, class:"nav-link" %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Создать учётную запись", new_user_registration_path, class:"nav-link" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
