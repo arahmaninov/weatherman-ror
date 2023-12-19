@@ -13,4 +13,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "users#default"
+
+  resources :locations
+
+  get "/about", to: "misc#about"
+
 end
