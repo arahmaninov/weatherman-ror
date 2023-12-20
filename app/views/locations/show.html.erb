@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%=# render @location %>
+<p>City: <% @location.name %></p>
+<p>Temperature: <% @location.temperature %></p>
+
+<div>
+  <%= link_to "Вернуться на главную", locations_path %>
+</div>

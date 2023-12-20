@@ -1,6 +1,10 @@
 class LocationsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  #before_action :set_location
+
   def index
     # all locations
+    @locations = Location.all
   end
 
   def show
@@ -9,10 +13,29 @@ class LocationsController < ApplicationController
 
   def new
     # get a form to create a new location
+    @location = Location.new
   end
 
   def create
     # create a new location from the data in 'new'
+    Location.create(
+      name: params[:name],
+      temperature: params[:temperature],
+      user_id: params[:user_id],
+    )
+
+=begin
+    @location = Location.new(location_params)
+
+    respond_to do |format|
+      if @location.save
+        format.html { redirect_to @location, notice: "Location was successfully added." }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
+=end
+
   end
 
   def edit
@@ -26,5 +49,15 @@ class LocationsController < ApplicationController
   def destroy
     # delete a location
   end
+
+  private 
+    #def set_location
+    #  @location = Location.find(params[:id])
+    #end
+=begin
+    def location_params
+      params.require(:location).permit(:name, :temperature, :user_id)
+    end
+=end
 
 end
