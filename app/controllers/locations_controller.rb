@@ -9,6 +9,7 @@ class LocationsController < ApplicationController
 
   def show
     # specific location
+    @location = Location.find(params[:id])
   end
 
   def new
