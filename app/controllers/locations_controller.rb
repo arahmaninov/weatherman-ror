@@ -24,6 +24,8 @@ class LocationsController < ApplicationController
       user_id: params[:user_id],
     )
 
+    redirect_to '/'
+
 =begin
     @location = Location.new(location_params)
 
@@ -44,10 +46,18 @@ class LocationsController < ApplicationController
 
   def update
     # update a location from the data in 'edit'
+    @location = Location.find(params[:id])
+    @location.update(
+      name: params[:name],
+      temperature: params[:temperature],
+      user_id: params[:user_id],
+    )
   end
 
   def destroy
     # delete a location
+    @location = Location.find(params[:id])
+    @location.destroy
   end
 
   private 
